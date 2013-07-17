@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F22F24F17966D300059FEB0 /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8F22F24E17966D300059FEB0 /* appicon.png */; };
 		8F44200317922676008D0EB2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F44200217922676008D0EB2 /* UIKit.framework */; };
 		8F44200517922676008D0EB2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F44200417922676008D0EB2 /* Foundation.framework */; };
 		8F44200717922676008D0EB2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F44200617922676008D0EB2 /* CoreGraphics.framework */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8F22F24E17966D300059FEB0 /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
 		8F441FFF17922676008D0EB2 /* NPNN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NPNN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F44200217922676008D0EB2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8F44200417922676008D0EB2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -104,6 +106,7 @@
 		8F441FF617922676008D0EB2 = {
 			isa = PBXGroup;
 			children = (
+				8F22F24E17966D300059FEB0 /* appicon.png */,
 				8FA5A2FB179284420027B5B5 /* appicon@2x.png */,
 				8F44200817922676008D0EB2 /* ContactDownloader */,
 				8F44200117922676008D0EB2 /* Frameworks */,
@@ -240,6 +243,7 @@
 				8FA5A2FE179289FC0027B5B5 /* background.png in Resources */,
 				8FA5A3061793297B0027B5B5 /* RootViewController.xib in Resources */,
 				8FE3EE4E1795141100A7A65E /* EventsViewController.xib in Resources */,
+				8F22F24F17966D300059FEB0 /* appicon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +351,8 @@
 		8F44202317922676008D0EB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mayank Jain (7UKHNS66GK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayank Jain (7UKHNS66GK)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
@@ -357,6 +363,8 @@
 				INFOPLIST_FILE = "ContactDownloader/NPNN-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = NPNN;
+				PROVISIONING_PROFILE = "2495F7DA-91BF-4DBF-94C9-E8F4B9793631";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2495F7DA-91BF-4DBF-94C9-E8F4B9793631";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -364,6 +372,8 @@
 		8F44202417922676008D0EB2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mayank Jain (7UKHNS66GK)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mayank Jain (7UKHNS66GK)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
@@ -374,6 +384,8 @@
 				INFOPLIST_FILE = "ContactDownloader/NPNN-Info.plist";
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = NPNN;
+				PROVISIONING_PROFILE = "2495F7DA-91BF-4DBF-94C9-E8F4B9793631";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2495F7DA-91BF-4DBF-94C9-E8F4B9793631";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
