@@ -114,6 +114,7 @@ numberOfRowsInSection:(NSInteger)section{
              ViewController *view = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
              view.array = posts;
              [self.navigationController pushViewController:view animated:YES];
+            [view setTitle:[self.events[[indexPath row]] objectForKey:@"name"]];
          }
      }];
     
