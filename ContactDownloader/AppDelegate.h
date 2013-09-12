@@ -16,13 +16,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
-@property (strong, nonatomic) ViewController *viewController;
-
-@property (strong, nonatomic) RootViewController *loginViewController;
-
 @property (strong, nonatomic) RootViewController *rootViewController;
-
 @property (strong, nonatomic) FBSession *session;
 
 @end
