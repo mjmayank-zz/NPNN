@@ -21,8 +21,8 @@
     if (self) {
         // Custom initialization
         
-        self.loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
-        [self.view addSubview:self.loginVC.view];
+
+//        [self.view addSubview:self.loginVC.view];
 //        self.loginVC.delegate = self;
     }
     return self;
@@ -36,7 +36,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.nav = [[UINavigationController alloc] initWithRootViewController:self.loginVC];
+    LoginViewController * loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
+
+    self.nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
     
     // and then something like:
     [self presentViewController:self.nav animated:NO completion:nil];

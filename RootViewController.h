@@ -17,10 +17,6 @@
 @property (strong, nonatomic) IBOutlet UIView *loginViewContainer;
 @property (strong, nonatomic) IBOutlet UIView *tableViewContainer;
 
-@property (strong, nonatomic) LoginViewController *loginVC;
-
-@property (strong, nonatomic) NSMutableArray *posts;
-
 @property (strong, nonatomic) UINavigationController * nav;
 
 @end

@@ -25,10 +25,6 @@
 	// Do any additional setup after loading the view, typically from a nib.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-//    self.rows = 20;
-//    self.array = [[NSMutableArray alloc] init];
-//    for(int i = 0; i<20;i++){
-//        [self.array addObject:[NSString stringWithFormat:@"703-123-234%d", i]];
 //    }
     
     
