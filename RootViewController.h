@@ -12,15 +12,15 @@
 #import "EventsViewController.h"
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface RootViewController : UIViewController<LoginViewControllerDelegate, ViewControllerDelegate>
+@interface RootViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *view;
 @property (strong, nonatomic) IBOutlet UIView *loginViewContainer;
 @property (strong, nonatomic) IBOutlet UIView *tableViewContainer;
 
 @property (strong, nonatomic) LoginViewController *loginVC;
-@property (strong, nonatomic) NSMutableArray *events;
-@property (strong, nonatomic) ViewController * VC;
-@property (strong, nonatomic) EventsViewController * EVC;
+
 @property (strong, nonatomic) NSMutableArray *posts;
+
+@property (strong, nonatomic) UINavigationController * nav;
 
 @end

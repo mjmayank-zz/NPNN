@@ -61,7 +61,54 @@
                                                          FBSessionState status,
                                                          NSError *error) {
             // and here we make sure to update our UX according to the new session state
-            [self.delegate loggedIn];
+//            [self.delegate loggedIn];
+            
+            AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
+            
+            [FBSession setActiveSession:appDelegate.session];
+            
+            [FBRequestConnection
+             startForMeWithCompletionHandler:^(FBRequestConnection *connection,
+                                               id<FBGraphUser> user,
+                                               NSError *error) {
+                 if (!error) {
+                     NSString *userInfo = @"";
+                     
+                     // Example: typed access (name)
+                     // - no special permissions required
+                     userInfo = [userInfo
+                                 stringByAppendingString:
+                                 [NSString stringWithFormat:@"Name: %@\n\n",
+                                  user.name]];
+                     
+                     
+                 }
+                 
+             }];
+            
+            NSString *query =
+            @"SELECT eid, name FROM event WHERE eid IN ( \
+            SELECT eid from event_member WHERE uid = me()   \
+            )";
+            // Set up the query parameter
+            NSDictionary *queryParam = @{ @"q": query };
+            // Make the API request that uses FQL
+            //    __block NSArray * test;
+            [FBRequestConnection startWithGraphPath:@"/fql" parameters:queryParam HTTPMethod:@"GET"
+                                  completionHandler:^(FBRequestConnection *connection,
+                                                      id result,
+                                                      NSError *error) {
+                                      if (error) {
+                                          NSLog(@"Error: %@", [error localizedDescription]);
+                                      } else {
+//                                          NSLog(@"Result: %@", result);
+                                          
+                                          EventsViewController * EVC = [[EventsViewController alloc] initWithNibName:@"EventsViewController" bundle:nil];
+                                          EVC.events = (NSMutableArray *)[result data];
+                                          [self.navigationController pushViewController:EVC animated:YES];
+                                      }
+                                  }];
+            
         }];
     }
 }

@@ -7,17 +7,12 @@
 //
 
 #import "ViewController.h"
-
-@protocol ViewControllerDelegate <NSObject>
-@required
-- (void) choseCell:(int)cellIndex;
-
-@end
-
+#import <FacebookSDK/FacebookSDK.h>
 
 @interface EventsViewController : ViewController
+
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
-@property (nonatomic, assign) id<ViewControllerDelegate>  delegate;
+@property (strong, nonatomic) NSMutableArray *events;
 
 @end

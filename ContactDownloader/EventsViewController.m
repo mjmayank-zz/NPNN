@@ -31,6 +31,13 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
+	[super viewWillAppear:animated];
+    
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -49,7 +56,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section{
-    return [self.array count];
+    return [self.events count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView
@@ -82,9 +89,7 @@ numberOfRowsInSection:(NSInteger)section{
             break;
     }
     
-    NSLog(@"test");
-    
-    cell.name.text = [self.array[[indexPath row]] objectForKey:@"name"];
+    cell.name.text = [self.events[[indexPath row]] objectForKey:@"name"];
     //    cell.number.text = self.array[[indexPath row]];
     cell.number.text = @"";
     
@@ -95,7 +100,22 @@ numberOfRowsInSection:(NSInteger)section{
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.delegate choseCell:[indexPath row]];
+    FBRequest *request = [FBRequest requestForGraphPath:[NSString stringWithFormat:
+                                                         @"%@/feed?access_token=%@", [self.events[[indexPath row]] objectForKey:@"eid" ],
+                                                         FBSession.activeSession.accessTokenData.accessToken]];
+    
+    [request startWithCompletionHandler:
+     ^(FBRequestConnection *connection, NSDictionary<FBGraphObject> *user, NSError *error) {
+         if (!error) {
+//             NSLog(@"data2 %@",user);
+             
+             NSMutableArray * posts = [user objectForKey:@"data"];
+             
+             ViewController *view = [[ViewController alloc] initWithNibName:@"ViewController" bundle:nil];
+             view.array = posts;
+             [self.navigationController pushViewController:view animated:YES];
+         }
+     }];
     
 }
 

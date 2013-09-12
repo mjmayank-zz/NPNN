@@ -30,6 +30,8 @@
 //    for(int i = 0; i<20;i++){
 //        [self.array addObject:[NSString stringWithFormat:@"703-123-234%d", i]];
 //    }
+    
+    
     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
     if (!appDelegate.session.isOpen) {
         // create a fresh session object
@@ -49,6 +51,12 @@
         }
     }
 
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+    
+	[self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,8 +110,6 @@ numberOfRowsInSection:(NSInteger)section{
             break;
     }
     
-    NSLog(@"test");
-    
     cell.name.text = [[self.array[[indexPath row]] objectForKey:@"from"] objectForKey:@"name"];
     cell.number.text = [self.array[[indexPath row]] objectForKey:@"message"];
 
@@ -114,10 +120,7 @@ numberOfRowsInSection:(NSInteger)section{
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Cell *cell = (Cell*)[tableView cellForRowAtIndexPath:indexPath];
-    NSString *str = cell.name.text;
-    NSLog(@"%@", str);
-    
+
     FBRequest *request = [FBRequest requestForGraphPath:[NSString stringWithFormat:
                                                          @"%@?access_token=%@", [[self.array[[indexPath row]] objectForKey:@"from"] objectForKey:@"id"],
                                                          FBSession.activeSession.accessTokenData.accessToken]];
@@ -125,7 +128,9 @@ numberOfRowsInSection:(NSInteger)section{
     [request startWithCompletionHandler:
      ^(FBRequestConnection *connection, NSDictionary<FBGraphObject> *user, NSError *error) {
          if (!error) {
-             [self saveContactToiOS:[user objectForKey:@"first_name"] lastName:[user objectForKey:@"last_name"] withNumber:[self.array[[indexPath row]] objectForKey:@"message"]];
+             if([user objectForKey:@"first_name"] && [user objectForKey:@"last_name"]){
+                 [self saveContactToiOS:[user objectForKey:@"first_name"] lastName:[user objectForKey:@"last_name"] withNumber:[self.array[[indexPath row]] objectForKey:@"message"]];
+             }
              
              [self.array removeObjectAtIndex:[indexPath row]];
              switch ([indexPath row] % 5) {
