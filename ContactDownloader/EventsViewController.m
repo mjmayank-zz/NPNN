@@ -35,7 +35,9 @@
     [self.tableView deselectRowAtIndexPath:[self.tableView indexPathForSelectedRow] animated:animated];
 	[super viewWillAppear:animated];
     
-	[self.navigationController setNavigationBarHidden:YES animated:YES];
+	[self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self setTitle:@"Events"];
+    self.navigationItem.hidesBackButton = YES;
 }
 
 - (void)didReceiveMemoryWarning

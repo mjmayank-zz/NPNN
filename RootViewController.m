@@ -39,6 +39,21 @@
     LoginViewController * loginVC = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 
     self.nav = [[UINavigationController alloc] initWithRootViewController:loginVC];
+    self.nav.navigationBar.tintColor = [UIColor whiteColor];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:
+      [UIColor blackColor],
+      UITextAttributeTextColor,
+      [UIColor clearColor],
+      UITextAttributeTextShadowColor,
+      [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
+      UITextAttributeTextShadowOffset,
+      [UIFont fontWithName:@"Futura" size:0.0],
+      UITextAttributeFont,
+      nil]];
+    
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[UIColor blackColor]];
     
     // and then something like:
     [self presentViewController:self.nav animated:NO completion:nil];
